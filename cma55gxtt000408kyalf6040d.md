@@ -188,7 +188,7 @@ Passwords can be *different*(prefer) or *same*
     
 2. To come out the file :
     
-    press ctrl + x  
+    press ctrl + x
     
 
 **Step 9:** Run these commands to initialize `redis` and `postgres`:
@@ -252,4 +252,6 @@ Helping links:
 
 # Suggestion
 
-If you are somehow failed to install/config judge 0 try reinstalling from start.
+* For smooth experience use sudo with all `docker` or `docker-compose` commands.
+    
+* If you are somehow failed to install/config judge 0 try reinstalling from start.
