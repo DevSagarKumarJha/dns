@@ -1,6 +1,6 @@
 ---
 title: "How to Install Judge0 on WSL and Linux – Step-by-Step Guide for Developers"
-seoTitle: "How to Install Judge0 on WSL and Linux – Step-by-Step Guide for Develo"
+seoTitle: "How to Install Judge0 on WSL and Linux"
 seoDescription: "Learn how to install and set up the Judge0 online code execution engine on WSL and Linux. Follow this complete, developer-friendly guide to get Judge0 runni"
 datePublished: Tue Apr 29 2025 18:30:00 GMT+0000 (Coordinated Universal Time)
 cuid: cma55gxtt000408kyalf6040d
