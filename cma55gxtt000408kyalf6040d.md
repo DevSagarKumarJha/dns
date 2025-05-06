@@ -242,6 +242,8 @@ Helping links:
 
 # Message: 'No such file or directory @ rb\_sysopen - /box/script.js',
 
+> This may or may not work for your operating system due to some architecture issues over operating system or machines
+
 **Step 1 :** Go to ~/.docker/desktop/settings-store.json
 
 ```bash
