@@ -195,7 +195,7 @@ Passwords can be *different*(prefer) or *same*
 **Step 9:** Run these commands to initialize `redis` and `postgres`:
 
 ```bash
-docker-compose up -d db redis
+docker-compose up -d db redis # use sudo for smooth experience
 ```
 
 wait for initialization of `redis` and `postgres`.
@@ -203,7 +203,7 @@ wait for initialization of `redis` and `postgres`.
 **Step 10:** Run these commands to initialize `workers` and `server`:
 
 ```bash
-docker-compose up -d
+docker-compose up -d # use sudo for smooth experience
 ```
 
 After these commands end, your instance of Judge0 CE v1.13.0 is now available at : [`http://0.0.0.0:2358`](http://0.0.0.0:2358/) *or* [`http://localhost:2358`](http://localhost:2358/) don’t worry your installation is working if you are getting empty white-page.
@@ -240,6 +240,24 @@ Helping links:
 
 ---
 
+# Message: 'No such file or directory @ rb\_sysopen - /box/script.js',
+
+**Step 1 :** Go to ~/.docker/desktop/settings-store.json
+
+```bash
+cd ~/.docker/desktop/settings-store.json # not use settings.json
+```
+
+Step 2: Append `“DeprecatedCgroupv1”: true` in settings-store.json file or not use settings.json
+
+```json
+{
+    “DeprecatedCgroupv1”: true
+}
+```
+
+---
+
 # References
 
 * [Judge0](https://judge0.com/)
@@ -253,6 +271,4 @@ Helping links:
 
 # Suggestion
 
-* For smooth experience use sudo with all `docker` or `docker-compose` commands.
-    
 * If you are somehow failed to install/config judge 0 try reinstalling from start.
