@@ -192,6 +192,8 @@ Passwords can be *different*(prefer) or *same*
     press ctrl + x
     
 
+> ‼️Do not modify `docker-compose.yml`, modify it only if you know what are you doing 💀.
+
 **Step 9:** Run these commands to initialize `redis` and `postgres`:
 
 ```bash
