@@ -260,6 +260,16 @@ Step 2: Append `“DeprecatedCgroupv1”: true` in settings-store.json file or n
 }
 ```
 
+# How to re run the judge0 container?
+
+Step 1: Open the judge0 folder with files (`docker-compose.yml` and `Jude0.conf`).
+
+Step2: Open the terminal and use
+
+```json
+docker-compose up -d
+```
+
 ---
 
 # References
