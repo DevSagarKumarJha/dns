@@ -135,7 +135,7 @@ sudo reboot
 
 **Step 1: Open Linux CLI**
 
-**Step 2: Upadate your System**
+**Step 2: Update your System**
 
 ```bash
 sudo apt update -y && sudo apt upgrade -y
