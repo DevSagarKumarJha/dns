@@ -6,7 +6,6 @@ datePublished: Tue Apr 29 2025 18:30:00 GMT+0000 (Coordinated Universal Time)
 cuid: cma55gxtt000408kyalf6040d
 slug: how-to-install-judge0-on-wsl-and-linux-step-by-step-guide-for-developers
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1746090603325/ed6a7236-a000-4f3f-a6f1-e973987f014e.png
-tags: ubuntu, linux, windows, windows-10, macos, wsl, windows-11, wsl-ubuntu, judge0, chaiaurcode, chaicode, chaicohort
 
 ---
 
