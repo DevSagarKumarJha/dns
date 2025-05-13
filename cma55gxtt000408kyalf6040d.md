@@ -1,14 +1,16 @@
 ---
-title: "How to Install Judge0 on WSL and Linux – Step-by-Step Guide for Developers"
+title: "How to Install Judge0 (Self Hosted) – Step-by-Step Guide for Developers"
 seoTitle: "How to Install Judge0 on WSL and Linux"
 seoDescription: "Learn how to install and set up the Judge0 online code execution engine on WSL and Linux. Follow this complete, developer-friendly guide to get Judge0 runni"
 datePublished: Tue Apr 29 2025 18:30:00 GMT+0000 (Coordinated Universal Time)
 cuid: cma55gxtt000408kyalf6040d
 slug: how-to-install-judge0-on-wsl-and-linux-step-by-step-guide-for-developers
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1746090603325/ed6a7236-a000-4f3f-a6f1-e973987f014e.png
-tags: ubuntu, linux, windows, windows-10, wsl, windows-11, wsl-ubuntu, judge0, chaiaurcode, chaicode, chaicohort
+tags: ubuntu, linux, windows, windows-10, macos, wsl, windows-11, wsl-ubuntu, judge0, chaiaurcode, chaicode, chaicohort
 
 ---
+
+# Introduction
 
 Judge0 is robust, scalable, and open-source code execution platform. Which enable us to create large and scalable softwares for competetive-programming, online IDEs,, online code editors, programming assessments, etc.
 
@@ -133,21 +135,45 @@ sudo reboot
 
 ## Common Installation
 
-**Step 1: Open Linux CLI**
+**Step 1: Open terminal (Windows open WSL CLI)**
 
 **Step 2: Update your System**
 
+*Mac:*
+
 ```bash
-sudo apt update -y && sudo apt upgrade -y
+sudo softwareupdate --install --all
+```
+
+*Linux or WSL:*
+
+```bash
+sudo apt update -y && sudo apt upgrade -y 
 ```
 
 **Step 3: Download** `Docker` and `Docker Compose` **(Skip If you have already installed)**
+
+*Mac*
+
+```bash
+brew install --cask docker
+```
+
+*Linux or WSL*
 
 ```bash
 sudo apt install docker.io && sudo apt install docker-compose
 ```
 
 **Step 4: Install** `unzip` **Package**
+
+*Mac*
+
+```bash
+brew install unzip
+```
+
+*Linux or WSL*
 
 ```bash
 sudo apt install unzip
@@ -159,7 +185,9 @@ sudo apt install unzip
 wget https://github.com/judge0/judge0/releases/download/v1.13.1/judge0-v1.13.1.zip
 ```
 
-**Step 6: Extract the judge0’s release archive**
+> You can directly download `judge0’s release archive` from [here](https://github.com/judge0/judge0/releases/download/v1.13.1/judge0-v1.13.1.zip).
+
+**Step 6: Extract or Unzip the judge0’s release archive**
 
 ```bash
 unzip judge0-v1.13.1.zip
@@ -223,7 +251,76 @@ Helping links:
 
 ---
 
-# From WSL to Docker-Desktop (for windows users)
+# Testing Installation
+
+Visit `http://localhost:2358/dummy-client.html` try to run.
+
+If you are getting accepted then congratulations installation is successful if compilation error check the Source Code stdin and expected output.
+
+If your are facing `internal error` with `Message: 'No such file or directory @ rb_sysopen - /box/script.js'` then goto
+
+Edit this text
+
+---
+
+# Message: 'No such file or directory @ rb\_sysopen - /box/script.js',
+
+Before we start, I want to inform that in some PCs you don’t need to configure that much but If you are getting the `Message: 'No such file or directory @ rb_sysopen - /box/script.js'`. Many of my collegues are getting this error too. So together we tried to solve the problem.
+
+> This may or may not work for your operating system due to some architecture issues over operating system or machines try reinstall the docker.
+
+**Reason**: Docker Desktop uses a **Linux VM** under the hood (e.g., Alpine or Debian-based), and **cgroups** are part of the **Linux kernel**. So you'll need to check cgroup version **inside the Docker VM or container**.
+
+```bash
+stat -fc %T /sys/fs/cgroup  # use WSL for windows to check it
+```
+
+*Outputs***:**
+
+* `cgroup2fs` → Cgroup v2
+    
+* `tmpfs` or `cgroup` → Cgroup v1
+    
+
+If your docker-desktop is running at CgroupV2 you need to downgrade it.
+
+Step 1: Open settings.json or settings-store.json
+
+## Windows
+
+```bash
+code "C:\Users\[Username]\AppData\Roaming\Docker\settings-store.json"
+```
+
+## Mac
+
+```bash
+vim ~/Library/Group\Containers/group.com.docker/settings-store.json
+```
+
+## Linux
+
+```bash
+nano ~/.docker/desktop/settings-store.json # not use settings.json
+```
+
+Step 2: Append `“DeprecatedCgroupv1”: true` in settings-store.json file or not use settings.json
+
+```json
+{
+    “DeprecatedCgroupv1”: true
+}
+```
+
+Step 3: Restart docker
+
+## Additionally Enable `Use Rosetta for x86_64/amd64 emulation on Apple Silicon` in Mac OS.
+
+Test it again, if this is useful “You’re Welcome”
+
+---
+
+# From WSL to Docker-Desktop (for windows users only)
 
 1. From the Docker menu, select **Settings &gt; General**
     
@@ -242,34 +339,26 @@ Helping links:
 
 ---
 
-# Message: 'No such file or directory @ rb\_sysopen - /box/script.js',
-
-> This may or may not work for your operating system due to some architecture issues over operating system or machines
-
-**Step 1 :** Go to ~/.docker/desktop/settings-store.json
-
-```bash
-cd ~/.docker/desktop/settings-store.json # not use settings.json
-```
-
-Step 2: Append `“DeprecatedCgroupv1”: true` in settings-store.json file or not use settings.json
-
-```json
-{
-    “DeprecatedCgroupv1”: true
-}
-```
-
-Step 3: Restart docker
-
 # How to re run the judge0 container?
 
 Step 1: Open the judge0 folder with files (`docker-compose.yml` and `Jude0.conf`).
 
 Step2: Open the terminal and use
 
-```json
+```bash
 docker-compose up -d
+```
+
+---
+
+# How to stop judge0 container?
+
+Step 1: Open the judge0 folder with files (`docker-compose.yml` and `Jude0.conf`).
+
+Step2: Open the terminal and use
+
+```bash
+docker-compose down
 ```
 
 ---
@@ -288,3 +377,5 @@ docker-compose up -d
 # Suggestion
 
 * If you are somehow failed to install/config judge 0 try reinstalling from start.
+    
+* Avoid multiple downloads of `judge0’s release archive`.
