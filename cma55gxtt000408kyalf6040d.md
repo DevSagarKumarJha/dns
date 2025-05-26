@@ -147,7 +147,7 @@ sudo softwareupdate --install --all
 *Linux or WSL:*
 
 ```bash
-sudo apt update -y && sudo apt upgrade -y 
+sudo apt update -y && sudo apt upgrade -y
 ```
 
 **Step 3: Download** `Docker` and `Docker Compose` **(Skip If you have already installed)**
@@ -271,10 +271,10 @@ Before we start, I want to inform that in some PCs you don’t need to configure
 **Reason**: Docker Desktop uses a **Linux VM** under the hood (e.g., Alpine or Debian-based), and **cgroups** are part of the **Linux kernel**. So you'll need to check cgroup version **inside the Docker VM or container**.
 
 ```bash
-stat -fc %T /sys/fs/cgroup  # use WSL for windows to check it
+stat -fc %T /sys/fs/cgroup  # use directly in linuc or mac and use into WSL for windows to check it
 ```
 
-*Outputs***:**
+*Outputs*\*\*:\*\*
 
 * `cgroup2fs` → Cgroup v2
     
@@ -289,21 +289,23 @@ Step 1: Open settings.json or settings-store.json
 
 ```bash
 code "C:\Users\[Username]\AppData\Roaming\Docker\settings-store.json"
+# setting-store is not present then use settings.json
 ```
 
 ## Mac
 
 ```bash
-vim ~/Library/Group\Containers/group.com.docker/settings-store.json
+vim ~/Library/Group\Containers/group.com.docker/settings-store.json 
+#setting-store is not present then use settings.json
 ```
 
 ## Linux
 
 ```bash
-nano ~/.docker/desktop/settings-store.json # not use settings.json
+nano ~/.docker/desktop/settings-store.json # setting-store is not present then use settings.json
 ```
 
-Step 2: Append `“DeprecatedCgroupv1”: true` in settings-store.json file or not use settings.json
+Step 2: Append `“DeprecatedCgroupv1”: true` in settings-store.json file or use `”deprecatedCgroupv1”: true` in settings.json
 
 ```json
 {
@@ -315,9 +317,16 @@ Step 3: Restart docker
 
 ## Additionally Enable `Use Rosetta for x86_64/amd64 emulation on Apple Silicon` in Mac OS.
 
-Test it again, if this is useful “You’re Welcome”
+Test it again, if this is useful “You’re Welcome”  
 
 ---
+
+# Still getting the error
+
+**Step 1:** Goto directory where setting-store.json is present and search for .setting-store.json.swp and delete it.  
+**Step 2:** Restart docker and rerun judge0
+
+**Still not able to resolve use** [**Sulu**](https://platform.sulu.sh/apis/judge0/judge0-ce/readme) **or** [**Rapid Api**](https://rapidapi.com/judge0-official/api/judge0-ce)**.**
 
 # From WSL to Docker-Desktop (for windows users only)
 
